@@ -1,0 +1,44 @@
+$(if error == '')
+<html>
+    <head><title>...</title></head>
+    <body>
+        $(if chap-id)
+        <noscript>
+            <center><b>JavaScript required. Enable JavaScript to continue.</b></center>
+        </noscript>
+        $(endif)
+        <center>If you are not redirected in a few seconds, click 'continue' below<br>
+        <form name="redirect" action="" method="post">
+            <input type="hidden" name="loginlink" value="$(link-login-only)">
+            <input type="hidden" name="nasid" value="$(identity)">
+            <input type="hidden" name="link_status" value="https://$(hostname)/$(target-dir)status">
+            <input type="hidden" name="link_login_only" value=" https://$(hostname)/$(target-dir)login">
+            <input type="hidden" name="link_logout" value=" https://$(hostname)/$(target-dir)logout">
+            <input type="hidden" name="mac" value="$(mac-esc)">
+            <input type="hidden" name="type" value="mikrotik">
+            <input type="hidden" name="ssid" value="@wicnet">
+            <input type="submit" value="continue">
+        </form>
+        <script language="JavaScript">
+        var reUrl = window.location.protocol + "//" + window.location.host;
+        var goUrl = window.location.protocol + "//example.com";
+        var f = document.querySelector("form");
+        f.setAttribute("action", goUrl+"/cake3/rd_cake/dynamic-details/mikrotik-browser-detect");
+        document.redirect.setAttribute("link_status", reUrl+"/status");
+        document.redirect.setAttribute("link_login_only", reUrl+"/login");
+        document.redirect.setAttribute("link_logout", reUrl+"/logout");
+        <!--
+           document.redirect.submit();
+        //-->
+        </script>
+        </center>
+    </body>
+</html>
+$(else)
+$(var)({
+	'logged_in' 	    : '$(logged-in)', 	
+	'link_login_only' 	: '$(link-login-only)',
+	'error_orig'		: '$(error-orig)',
+	'error'			: '$(error)'
+})
+$(endif)
