@@ -81,6 +81,7 @@ Radius desk with pwa enbled, most pwerfull modern ui for hotspot management.
 >sudo cp /var/www/html/cake3/rd_cake/setup/cron/cron3 /etc/cron.d/
 
 #Introduction
+
 Ubuntu 20.04 now comes with a FreeRADIUS 3.x release.
 Install FreeRADIUS and MySQL module.
 
@@ -88,8 +89,8 @@ Install FreeRADIUS and MySQL module.
 
 >sudo apt-get install freeradius freeradius-mysql
 
-# Answer yes to install these with their dependencies
-# Please note that when this package is installed there are some things generated that can take up lots of time on slower machines.
+#Answer yes to install these with their dependencies
+#Please note that when this package is installed there are some things generated that can take up lots of time on slower machines.
 Enable and Start FreeRADIUS
 
 >sudo systemctl enable freeradius
@@ -100,11 +101,11 @@ Enable and Start FreeRADIUS
 
 #Configuring FreeRADIUS version 3.x
 Do the following to configure FreeRADIUS 3.x to work with RADIUSdesk
-# Stop the service if it is already running
+#Stop the service if it is already running
 >sudo systemctl stop freeradius
-# Backup the original FreeRADIUSdirectory
+#Backup the original FreeRADIUSdirectory
 >sudo mv /etc/freeradius /etc/freeradius.orig
-# Extract the RADIUSdesk modified FreeRADIUS directory
+#Extract the RADIUSdesk modified FreeRADIUS directory
 >sudo tar xzf /var/www/html/cake3/rd_cake/setup/radius/freeradius-3-radiusdesk.tar.gz --one-top-level=/etc/freeradius/
 
 >sudo mv /etc/freeradius/freeradius /etc/freeradius/3.0
@@ -122,16 +123,16 @@ Do the following to configure FreeRADIUS 3.x to work with RADIUSdesk
 
 Look for this part in the file and change FreeRADIUS-Client-Secret to the value you choose to use.
 
-*#Echo the IP address of the client.
+#Echo the IP address of the client.
 FreeRADIUS-Client-IP-Address = "%{Packet-Src-IP-Address}"
  
-*#require_message_authenticator
+#require_message_authenticator
 FreeRADIUS-Client-Require-MA = no
  
-*# secret
+#secret
 FreeRADIUS-Client-Secret = "testing123"
  
-*# shortname
+#shortname
 FreeRADIUS-Client-Shortname = "%{Packet-Src-IP-Address}"
 Comment out the following two lines in the Systemd unit file
 
@@ -147,8 +148,8 @@ Documentation=man:radiusd(8) man:radiusd.conf(5) http://wiki.freeradius.org/ htt
 [Service]
 Type=forking
 PIDFile=/run/freeradius/freeradius.pid
-*#EnvironmentFile=-/etc/default/freeradius
-*#ExecStartPre=/usr/sbin/freeradius $FREERADIUS_OPTIONS -Cxm -lstdout
+#EnvironmentFile=-/etc/default/freeradius
+#ExecStartPre=/usr/sbin/freeradius $FREERADIUS_OPTIONS -Cxm -lstdout
 ExecStart=/usr/sbin/freeradius $FREERADIUS_OPTIONS
 Restart=on-failure
 RestartSec=5
@@ -160,12 +161,11 @@ sudo systemctl daemon-reload
 sudo systemctl restart freeradius
 sudo systemctl status freeradius
 
-##Fixing a small bug
+#Fixing a small bug
+
 There is a small bug which prevents FreeRADIUS to start up after a reboot.
-It has been reported here: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=954911
-There also seems to be a fix but it has not reached the Ubuntu repositories as of this writing.
-So here is the fix taken from the discussion in the link
-Create a file called /usr/lib/tmpfiles.d/freeradius.conf
+
+It has been reported here: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=954911 There also seems to be a fix but it has not reached the Ubuntu repositories as of this writing. So here is the fix taken from the discussion in the link Create a file called /usr/lib/tmpfiles.d/freeradius.conf
 
 >sudo nano  /usr/lib/tmpfiles.d/freeradius.conf
 
@@ -183,7 +183,7 @@ The correct way to edit the sudoers file is by using:
 
 Add the following at the bottom
 
-*# Members of the admin group may gain root privileges
+#Members of the admin group may gain root privileges
 
 > %admin ALL=(ALL) ALL www-data ALL = NOPASSWD:/var/www/html/cake3/rd_cake/setup/scripts/radmin_wrapper.pl
 
