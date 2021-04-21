@@ -121,20 +121,25 @@ Do the following to configure FreeRADIUS 3.x to work with RADIUSdesk
 
 >sudo nano /etc/freeradius/3.0/sites-enabled/dynamic-clients
 
-Look for this part in the file and change FreeRADIUS-Client-Secret to the value you choose to use.
+#Look for this part in the file and change FreeRADIUS-Client-Secret to the value you choose to use.
 
-#Echo the IP address of the client.
-FreeRADIUS-Client-IP-Address = "%{Packet-Src-IP-Address}"
+>#Echo the IP address of the client.
+
+>FreeRADIUS-Client-IP-Address = "%{Packet-Src-IP-Address}"
  
-#require_message_authenticator
-FreeRADIUS-Client-Require-MA = no
+>#require_message_authenticator
+
+>FreeRADIUS-Client-Require-MA = no
  
-#secret
-FreeRADIUS-Client-Secret = "testing123"
+>#secret
+
+>FreeRADIUS-Client-Secret = "testing123"
  
-#shortname
-FreeRADIUS-Client-Shortname = "%{Packet-Src-IP-Address}"
-Comment out the following two lines in the Systemd unit file
+>#shortname
+
+>FreeRADIUS-Client-Shortname = "%{Packet-Src-IP-Address}"
+
+#Comment out the following two lines in the Systemd unit file
 
 >sudo nano /lib/systemd/system/freeradius.service
 
@@ -148,9 +153,12 @@ Documentation=man:radiusd(8) man:radiusd.conf(5) http://wiki.freeradius.org/ htt
 >[Service]
 Type=forking
 PIDFile=/run/freeradius/freeradius.pid
-#EnvironmentFile=-/etc/default/freeradius
-#ExecStartPre=/usr/sbin/freeradius $FREERADIUS_OPTIONS -Cxm -lstdout
-ExecStart=/usr/sbin/freeradius $FREERADIUS_OPTIONS
+
+>#EnvironmentFile=-/etc/default/freeradius
+
+>#ExecStartPre=/usr/sbin/freeradius $FREERADIUS_OPTIONS -Cxm -lstdout
+
+>ExecStart=/usr/sbin/freeradius $FREERADIUS_OPTIONS
 Restart=on-failure
 RestartSec=5
  
