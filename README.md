@@ -12,7 +12,7 @@ Radius desk with pwa enbled, most pwerfull modern ui for hotspot management.
 - Mysql/Mariadb
 - Nginx/Apache
 - Php7.4/Php7.4-fpm *newer
-
+- certbot
 #recomended
 - if using mikrotik for nas device, install vpn or pptp server.
 - for integrated mikrotik login page, check the /mirkotik folder
