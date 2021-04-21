@@ -8,7 +8,7 @@ Radius desk with pwa enbled, most pwerfull modern ui for hotspot management.
 - Php7.4/Php7.4-fpm *newer
 
 #Install
-sudo apt-get install php-cli php-mysql php-gd php-curl php-xml php-mbstring php-intl git wget
+> sudo apt-get install php-cli php-mysql php-gd php-curl php-xml php-mbstring php-intl git wget
 cd /var/www
 git clone https://github.com/idmahbub/radiusdesk-pwa.git rd_code
 cd /var/www/html
