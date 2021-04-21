@@ -140,12 +140,12 @@ Comment out the following two lines in the Systemd unit file
 
 See this sample to see which two lines to comment out. Failing to do this will result in a broken system with FreeRADIUS not starting up during boot
 
-[Unit]
+>[Unit]
 Description=FreeRADIUS multi-protocol policy server
 After=syslog.target network.target
 Documentation=man:radiusd(8) man:radiusd.conf(5) http://wiki.freeradius.org/ http://networkradius.com/doc/
  
-[Service]
+>[Service]
 Type=forking
 PIDFile=/run/freeradius/freeradius.pid
 #EnvironmentFile=-/etc/default/freeradius
@@ -154,7 +154,7 @@ ExecStart=/usr/sbin/freeradius $FREERADIUS_OPTIONS
 Restart=on-failure
 RestartSec=5
  
-[Install]
+>[Install]
 WantedBy=multi-user.target
 After you completed these commands you can test if FreeRADIUS starts up fine.
 sudo systemctl daemon-reload 
