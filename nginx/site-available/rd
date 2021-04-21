@@ -1,0 +1,33 @@
+server {
+        root /var/www/html/;
+        autoindex on;
+        index index.php index.html index.htm index.nginx-debian.html;
+        server_name example.com www.example.com;
+
+        location ~ ^/cake3/.+\.(jpg|jpeg|gif|png|ico|js|css)$ {
+                rewrite ^/cake3/rd_cake/webroot/(.*)$ /cake3/rd_cake/webroot/$1 break;
+                rewrite ^/cake3/rd_cake/(.*)$ /cake3/rd_cake/webroot/$1 break;
+                access_log off;
+                expires max;
+                add_header Cache-Control public;
+        }
+        location /cake3/rd_cake {
+                rewrite ^/cake3/rd_cake(.+)$ /cake3/rd_cake/webroot$1 break;
+                try_files $uri $uri/ /cake3/rd_cake/index.php$is_args$args;
+        }
+
+        location / {
+                try_files $uri $uri/ /index.php?$query_string;
+        }
+
+        location ~ \.php$ {
+                include snippets/fastcgi-php.conf;
+                fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
+        }
+
+        location ~ /\.ht {
+                deny all;
+        }
+
+
+}
