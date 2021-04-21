@@ -1,6 +1,12 @@
 # Radiusdesk-pwa
 Radius desk with pwa enbled, most pwerfull modern ui for hotspot management.
 
+# Feature
+- Mikrotik dynamic login page integrated
+- Api Backend for generate user, voucher etc.
+- Single-page application for management.
+- Enable for Advertising
+
 #Requirement
 - ubuntu server *20.04 recomended
 - Mysql/Mariadb
