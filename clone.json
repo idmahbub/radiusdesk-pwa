@@ -1,4 +1,4 @@
 {
-  "message": "API rate limit exceeded for 104.208.156.239. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)",
-  "documentation_url": "https://docs.github.com/rest/overview/resources-in-the-rest-api#rate-limiting"
+  "message": "Must have push access to repository",
+  "documentation_url": "https://docs.github.com/rest/reference/repos#get-repository-clones"
 }
