@@ -7,7 +7,7 @@ Ext.define('Rd.view.welcome.pnlWelcome', {
         {
             xtype   : 'container',
             html    : [ 
-                "<h2>Welcome RADIUSdesk</h2>", 
+                "<h2>Welcome WICNET</h2>", 
                 "<p><big><b>We have detected that this is your first time here.<br>",
                 "Let’s define your first network using the <i>Setup Wizard</i>",
                 "</b></big><br><br></p>"
